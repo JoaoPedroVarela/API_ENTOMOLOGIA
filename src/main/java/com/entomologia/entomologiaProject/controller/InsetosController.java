@@ -32,7 +32,7 @@ public class InsetosController {
         return new ResponseEntity<>(insetos, HttpStatus.CREATED);
     }
 
-    @Operation(summary = "Edita um inseto")
+    @Operation(summary = "Edita um insetocolocar o id no request pra quem quiser editar")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Inseto editado com sucesso"),
             @ApiResponse(responseCode = "400", description = "Erro na requisição")
@@ -69,7 +69,7 @@ public class InsetosController {
     }
 
 
-    @Operation(summary = "Buscar todos os insetos, colocar o id no request pra quem quiser editar")
+    @Operation(summary = "Buscar todos os insetos")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Insetos encontrados"),
             @ApiResponse(responseCode = "404", description = "Insetos não encontrados")
