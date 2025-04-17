@@ -23,10 +23,10 @@ public class InsetosRepository implements RepositoryPattern<Insetos> {
         public Insetos mapRow(ResultSet rs, int rowNum) throws SQLException {
             Insetos insetos = new Insetos();
             insetos.setId(rs.getLong("id"));
+            insetos.setIdColetor(rs.getLong("idColetor"));
             insetos.setNome(rs.getString("nome"));
             insetos.setDataColeta(rs.getDate("dataColeta").toLocalDate());
             insetos.setLocalColeta(rs.getString("localColeta"));
-            insetos.setNomeColetor(rs.getString("nomeColetor"));
             insetos.setTag(rs.getString("tag"));
             insetos.setFamilia(rs.getString("familia"));
             insetos.setGenero(rs.getString("genero"));
@@ -37,16 +37,16 @@ public class InsetosRepository implements RepositoryPattern<Insetos> {
 
     @Override
     public void save(Insetos insetos) {
-        String sql = "INSERT INTO entomologia (nome, dataColeta, localColeta, nomeColetor, tag, familia, genero, ordem) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
-        jdbcTemplate.update(sql, insetos.getNome(), insetos.getDataColeta(), insetos.getLocalColeta()
-                , insetos.getNomeColetor(), insetos.getTag(), insetos.getFamilia(), insetos.getGenero(), insetos.getOrdem());
+        String sql = "INSERT INTO entomologia (idColetor, nome, dataColeta, localColeta, tag, familia, genero, ordem) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+        jdbcTemplate.update(sql, insetos.getIdColetor(), insetos.getNome(), insetos.getDataColeta(), insetos.getLocalColeta()
+                , insetos.getTag(), insetos.getFamilia(), insetos.getGenero(), insetos.getOrdem());
     }
 
     @Override
     public void update(Insetos insetos) {
-        String sql = "UPDATE entomologia set nome = ?, dataColeta = ?, localColeta = ?, nomeColetor = ?, tag = ?, familia = ?, genero = ?, ordem = ? where id = ?;";
-        jdbcTemplate.update(sql, insetos.getNome(), insetos.getDataColeta(), insetos.getLocalColeta()
-                , insetos.getNomeColetor(), insetos.getTag(), insetos.getFamilia(), insetos.getGenero(), insetos.getOrdem(), insetos.getId());
+        String sql = "UPDATE entomologia set idColetor = ?, nome = ?, dataColeta = ?, localColeta = ?, tag = ?, familia = ?, genero = ?, ordem = ? where id = ?;";
+        jdbcTemplate.update(sql, insetos.getIdColetor(), insetos.getNome(), insetos.getDataColeta(), insetos.getLocalColeta()
+                , insetos.getTag(), insetos.getFamilia(), insetos.getGenero(), insetos.getOrdem(), insetos.getId());
     }
 
     @Override

@@ -16,9 +16,6 @@ public class Insetos {
     @Schema(description = "Data da coleta", example = "YYYY-MM-DD")
     private LocalDate dataColeta;
 
-    @Schema(description = "Nome de quem fez a coleta do inseto", example = "João")
-    private String nomeColetor;
-
     @Schema(description = "Tag do inseto", example = "USYE1468TDH")
     private String tag;
 
@@ -34,12 +31,23 @@ public class Insetos {
     @Schema(description = "Id do inseto")
     private Long id;
 
+    @Schema(description = "Id do coletor")
+    private Long idColetor;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Long getIdColetor() {
+        return idColetor;
+    }
+
+    public void setIdColetor(Long idColetor) {
+        this.idColetor = idColetor;
     }
 
     public String getNome() {
@@ -64,14 +72,6 @@ public class Insetos {
 
     public void setDataColeta(LocalDate dataColeta) {
         this.dataColeta = dataColeta;
-    }
-
-    public String getNomeColetor() {
-        return nomeColetor;
-    }
-
-    public void setNomeColetor(String nomeColetor) {
-        this.nomeColetor = nomeColetor;
     }
 
     public String getTag() {
