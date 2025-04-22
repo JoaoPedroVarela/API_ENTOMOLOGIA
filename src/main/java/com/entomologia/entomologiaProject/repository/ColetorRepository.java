@@ -37,14 +37,14 @@ public class ColetorRepository implements RepositoryPattern<Coletor> {
 
     @Override
     public void update(Coletor coletor) {
-        String sql = "UPDATE coletor SET nomeColetor = ?, cpfColetor = ? WHERE idColetor ?;";
+        String sql = "UPDATE coletor SET nomeColetor = ?, cpfColetor = ? WHERE idColetor = ?;";
 
-        jdbcTemplate.update(sql, coletor.getNomeColetor(), coletor.getCpfColetor());
+        jdbcTemplate.update(sql, coletor.getNomeColetor(), coletor.getCpfColetor(), coletor.getIdColetor());
     }
 
     @Override
     public void delete(Long id) {
-        String sql = "DELETE coletor where idColetor = ?;";
+        String sql = "DELETE FROM coletor WHERE idColetor = ?;";
 
         jdbcTemplate.update(sql, id);
     }
